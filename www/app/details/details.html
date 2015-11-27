@@ -1,0 +1,53 @@
+<ion-navbar *navbar>
+  <ion-title>{{pokemon.name}} - #{{pokemon.national_id}}</ion-title>
+</ion-navbar>
+
+<ion-content class="details">
+    <ion-row class="sprite-container">
+        <img [src]="sprite"></img>
+    </ion-row>
+    <ion-list>
+        <ion-item>
+            <icon heart item-left></icon>
+            HP
+            <ion-note item-right>
+                {{pokemon.hp}}
+            </ion-note>
+        </ion-item>
+        <ion-item>
+            <icon color-wand item-left></icon>
+            Attack
+            <ion-note item-right>
+                {{pokemon.attack}}
+            </ion-note>
+        </ion-item>
+        <ion-item>
+            <icon egg item-left></icon>
+            Defense
+            <ion-note item-right>
+                {{pokemon.defense}}
+            </ion-note>
+        </ion-item>
+        <ion-item>
+            <icon speedometer item-left></icon>
+            Speed
+            <ion-note item-right>
+                {{pokemon.speed}}
+            </ion-note>
+        </ion-item>
+        <ion-item>
+            <icon color-palette item-left></icon>
+            Type
+            <ion-note item-right>
+                <span *ng-for="#type of pokemon.types" [class]="'type ' + type.name">{{type.name}}</span>
+            </ion-note>
+        </ion-item>
+        <ion-item *ng-for="#evolution of pokemon.evolutions">
+            <icon [name]="getIcon(evolution.method)" item-left></icon>
+            Evolution
+            <ion-note item-right>
+                <span >{{evolution.to}}</span>
+            </ion-note>
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,13 @@
+<ion-navbar *navbar>
+  <ion-title>
+    Pokédex
+  </ion-title>
+</ion-navbar>
+<ion-searchbar [(ng-model)]="query"></ion-searchbar>
+<ion-content padding>
+    <ion-list>
+        <ion-item *ng-for="#pokemon of filterPokemons()" (click)="pokeSelected($event, pokemon)">
+            {{ pokemon.name | firstupper}}
+        </ion-item>
+    </ion-list>
+</ion-content>
